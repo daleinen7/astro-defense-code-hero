@@ -5,14 +5,33 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+import Station from '../../components/Station/Station';
+import Space from '../../components/Space/Space';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+
+      asteroids:[
+
+      ]
+      
       user: userService.getUser()
     };
   }
+
+  /*
+
+  asteroid {
+    percentAcross: 0,
+    category: 'JS',
+    question: 'call the variable red: arr = ["zero","one",["two", "red"], "three"]',
+    answer: 'arr[2][1]',
+    type: 'call var'
+  }
+
+  */
 
   /*--- Callback Methods ---*/
   handleLogout = () => {
@@ -34,7 +53,10 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={() =>
-           <div>Hello World!</div> 
+            <div className={"App"}>
+              <Station /> 
+              <Space />
+            </div>
           }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage

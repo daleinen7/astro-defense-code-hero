@@ -1,0 +1,9 @@
+.Station {
+    width: 30%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-around;
+    background-color: gray;
+}
