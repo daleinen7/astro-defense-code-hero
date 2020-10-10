@@ -12,11 +12,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
-      asteroids:[
-
-      ]
-      
       user: userService.getUser()
     };
   }
