@@ -12,6 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      focused: 0,
       user: userService.getUser()
     };
   }
@@ -29,6 +30,10 @@ class App extends Component {
   */
 
   /*--- Callback Methods ---*/
+  handleFocus = (focusedLane) => {
+    this.setState({focused: focusedLane})
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({user: null})
@@ -38,6 +43,22 @@ class App extends Component {
     this.setState({user: userService.getUser()})
   }
   /*--- Lifecycle Methods ---*/
+
+  componentDidMount() {
+    window.addEventListener('keydown', (e)=> {
+      if(e.keyCode === 38) {
+        // hardcoded lane count
+        if (this.state.focused === 0) {
+          this.handleFocus(2)
+        } else {
+          this.handleFocus(Math.abs((this.state.focused - 1) % 3))
+        }
+      } else if(e.keyCode === 40) {
+        // again hardcoded lane count
+        this.handleFocus(Math.abs((this.state.focused + 1) % 3))
+      }
+    })
+  }
 
   render() {
     return (
@@ -49,8 +70,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <div className={"App"}>
-              <Station /> 
-              <Space />
+              <Station focused={this.state.focused} /> 
+              <Space focused={this.state.focused} />
             </div>
           }/>
           <Route exact path='/signup' render={({ history }) => 

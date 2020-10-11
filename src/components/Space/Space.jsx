@@ -5,9 +5,9 @@ import Lane from '../../components/Lane/Lane';
 const Space = (props) => {
   return(
     <div className={styles.Space}>
-      <Lane />
-      <Lane />
-      <Lane />
+      <Lane focused={props.focused} />
+      <Lane focused={props.focused} />
+      <Lane focused={props.focused} />
     </div>
   )
 }
