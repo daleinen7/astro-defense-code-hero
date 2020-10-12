@@ -1,6 +1,6 @@
 .Station {
     width: 30%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     height: 90vh;

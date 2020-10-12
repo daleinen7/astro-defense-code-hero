@@ -1,7 +1,7 @@
 .Lane {
     height: 220px;
     width: 100%;
-    border: 1px solid magenta;
+    /* border: 1px solid magenta; */
     display: flex;
     justify-content: flex-end;
 }

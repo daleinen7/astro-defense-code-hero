@@ -1,0 +1,7 @@
+.Shields {
+    width: 10%;
+    height: 100%;
+    /* border: 1px solid lightblue; */
+    position: absolute;
+    box-shadow: inset -127px 0 129px -127px rgba(94, 179, 244, 0.9);
+}

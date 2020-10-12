@@ -3,7 +3,14 @@ import styles from './Asteroid.module.css';
 
 const Asteroid = (props) => {
   return(
-    <div className={styles.Asteroid}>
+    <div 
+      className={styles.Asteroid}
+      style={{
+        position: "relative",
+        right: "0"
+      }}
+    
+    >
       Asteroid
     </div>
   )
