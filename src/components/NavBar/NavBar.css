@@ -6,8 +6,11 @@
   
   .NavBar-link {
     margin: 0 10px;
+    color: rgb(31, 176, 193);
+    font-family: 'Overpass Mono', monospace;
   }
   
   .NavBar-welcome {
-    color: grey;
+    color:rgb(31, 176, 193);
+    font-family: 'Overpass Mono', monospace;
   }
