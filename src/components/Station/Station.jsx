@@ -4,7 +4,7 @@ import CodeInput from '../../components/CodeInput/CodeInput';
 
 const Station = (props) => {
 
-  console.log((props.focused == 0))
+  console.log((props.focused === 0))
 
   return(
     <div className={styles.Station}>

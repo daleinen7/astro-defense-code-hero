@@ -1,19 +1,40 @@
 import React from 'react';
 import styles from './CodeInput.module.css';
 
-const CodeInput = (props) => {
-  console.log("ID " + typeof(props.id) + " : " + (props.id) + " focused " + typeof(props.focused) + " : " + props.focused);
-  console.log(`${props.id} == ${props.focused} is a ${props.focused == props.id} statement`)
-  return(
-    <textarea 
-      className={styles.CodeInput}
-      style={{
-        backgroundColor: props.focused === props.id ? "purple" : 'rgb(21, 16, 16)'  
-      }}
-    >
-      
-    </textarea>
-  )
+class CodeInput extends React.Component {
+  constructor(props) {
+    super(props)
+    this.textarea = React.createRef();
+  }
+
+  componentDidMount() {
+    if(this.props.id === this.props.focused) {
+      this.textarea.current.focus();
+    }
+  }
+  
+  componentDidUpdate() {
+    if(this.props.id === this.props.focused) {
+      this.textarea.current.focus();
+    }
+  }
+
+  render() {
+    return(
+      <textarea 
+        className={styles.CodeInput}
+        ref={this.textarea}
+        style={{
+          backgroundColor: this.props.focused === this.props.id ? 'rgb(31, 22, 23)' : 'rgb(21, 16, 16)',
+          color: this.props.focused === this.props.id ? 'rgb(46, 189, 7)' : 'rgb(0, 128, 0)',
+          border: this.props.focused === this.props.id ? '4px solid rgb(46, 189, 7)' : '4px solid rgb(0, 128, 0)'  
+        }}
+      >
+        
+      </textarea>
+    )
+  }
 }
+
 
 export default CodeInput;
