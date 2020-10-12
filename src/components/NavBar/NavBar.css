@@ -1,16 +1,33 @@
+.NavBar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  /* position: absolute; */
+  background-color: rgba(9, 31, 53, 0.81);
+  /* border: 1px solid greenyellow; */
+}
+
+.NavBar-title {
+  font-family: 'Overpass Mono', monospace;
+  color: rgb(31, 176, 193);
+  text-shadow: 1px 1px lightcoral;
+  margin-left: 2vw;
+}
+
 .NavBar {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 0 20px;
-  }
-  
-  .NavBar-link {
-    margin: 0 10px;
-    color: rgb(31, 176, 193);
-    font-family: 'Overpass Mono', monospace;
-  }
-  
-  .NavBar-welcome {
-    color:rgb(31, 176, 193);
-    font-family: 'Overpass Mono', monospace;
-  }
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 20px;
+}
+
+.NavBar-link {
+  margin: 0 10px;
+  color: rgb(31, 176, 193);
+  font-family: 'Overpass Mono', monospace;
+}
+
+.NavBar-welcome {
+  color:rgb(31, 176, 193);
+  font-family: 'Overpass Mono', monospace;
+}

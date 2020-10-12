@@ -15,9 +15,14 @@ const NavBar = (props) => {
     </div>;
 
   return (
-    <div className='NavBar'>
-      {nav}
-    </div>
+    <>
+      <div className="NavBar-header">
+        <h1 className='NavBar-title'>Astro Defense Code Hero</h1>
+        <div className='NavBar'>
+          {nav}
+        </div>
+      </div>
+    </>
   );
 };
 

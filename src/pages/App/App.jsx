@@ -69,7 +69,7 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={() =>
-            <div className={"App"}>
+            <div className="App">
               <Station focused={this.state.focused} /> 
               <Space focused={this.state.focused} />
             </div>
