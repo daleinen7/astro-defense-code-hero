@@ -41,7 +41,7 @@ class App extends Component {
   }
   /*--- Callback Methods ---*/
   handleCollision = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
   }
   
   handleFocus = (focusedLane) => {
@@ -60,7 +60,7 @@ class App extends Component {
   /*--- Lifecycle Methods ---*/
   componentDidMount() {
 
-    this.interval = setInterval(()=> this.setState({time: Date.now() }), 1000);
+    this.interval = setInterval(()=> this.createAsteroid(), 1000);
 
     window.addEventListener('keydown', (e)=> {
       if(e.keyCode === 38) {
