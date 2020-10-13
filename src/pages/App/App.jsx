@@ -30,10 +30,10 @@ class App extends Component {
   */
 
   createAsteroid() {
-    const asteroid = <Asteroid
+    const asteroid = [Math.floor(Math.random() * 3), <Asteroid
       question='Question goes here'
       answer='Answer is this'
-    />
+    />]
     let asteroids = this.state.asteroids.slice()
     asteroids.push(asteroid);
     this.setState({asteroids: asteroids})
