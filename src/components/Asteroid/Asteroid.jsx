@@ -11,14 +11,18 @@ const Asteroid = (props) => {
         x:"-110%",
         // duration:100000,
         duration: 1000,
-        ease: 'linear'
+        ease: 'linear',
+        onComplete: (e)=> props.handleCollision(e)
       }}
     >
       <div 
         className={styles.Asteroid}
       
       >
-        <Question />
+        <Question 
+          question={props.question}
+          // answer={asteroid.answer}
+        />
       </div>
     </TweenOne>
   )

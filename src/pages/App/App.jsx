@@ -7,7 +7,6 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import Station from '../../components/Station/Station';
 import Space from '../../components/Space/Space';
-import Asteroid from '../../components/Asteroid/Asteroid';
 
 class App extends Component {
   constructor() {
@@ -30,15 +29,21 @@ class App extends Component {
   */
 
   createAsteroid() {
-    const asteroid = [Math.floor(Math.random() * 3), <Asteroid
-      question='Question goes here'
-      answer='Answer is this'
-    />]
+    const asteroid = {
+      lane: Math.floor(Math.random() * 3),
+      progress: 0,
+      question:'Question goes here',
+      answer:'Answer is this',
+    }
     let asteroids = this.state.asteroids.slice()
     asteroids.push(asteroid);
     this.setState({asteroids: asteroids})
   }
   /*--- Callback Methods ---*/
+  handleCollision = (e) => {
+    console.log(e.target);
+  }
+  
   handleFocus = (focusedLane) => {
     this.setState({focused: focusedLane})
   }
@@ -51,9 +56,12 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()})
   }
-  /*--- Lifecycle Methods ---*/
 
+  /*--- Lifecycle Methods ---*/
   componentDidMount() {
+
+    this.interval = setInterval(()=> this.setState({time: Date.now() }), 1000);
+
     window.addEventListener('keydown', (e)=> {
       if(e.keyCode === 38) {
         // hardcoded lane count
@@ -71,6 +79,10 @@ class App extends Component {
     })
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     return (
       <div>
@@ -82,7 +94,11 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <div className="App">
               <Station focused={this.state.focused} /> 
-              <Space asteroids={this.state.asteroids} focused={this.state.focused} />
+              <Space 
+                asteroids={this.state.asteroids} 
+                focused={this.state.focused} 
+                handleCollision={this.handleCollision}
+              />
             </div>
           }/>
           <Route exact path='/signup' render={({ history }) => 

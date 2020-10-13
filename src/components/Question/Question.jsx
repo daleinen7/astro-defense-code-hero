@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Question.module.css';
 
 const Question = (props) => {
-  const text = "Call the 'Red': \n arr = ['one', 'two', ['three', 'red'], 'four']";
+  const text = props.question;
   const newText = text.split('\n');
   return(
     <div className={styles.Question}>
