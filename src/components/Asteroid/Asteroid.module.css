@@ -1,6 +1,7 @@
 .Asteroid {
     /* height: 100%; */
     width: 50%;
+    margin-right: -100%;
     float: right;
     background-color: rgb(46, 44, 42);
     /* padding: 40px; */
