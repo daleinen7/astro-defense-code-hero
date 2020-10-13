@@ -1,10 +1,10 @@
 .Asteroid {
     /* height: 100%; */
     width: 50%;
-    margin-right: -100%;
+    margin-right: -60%;
     float: right;
     background-color: rgb(46, 44, 42);
     /* padding: 40px; */
-    padding: 0;
+    /* padding: 40px; */
     border-radius: 70px;
 }

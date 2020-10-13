@@ -9,7 +9,7 @@ const Asteroid = (props) => {
     <TweenOne 
       animation={{
 
-        x:"-150%",
+        x:"-110%",
         // duration:600000,
         duration: 1000,
         ease: 'linear'
