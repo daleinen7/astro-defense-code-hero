@@ -1,0 +1,8 @@
+.Question {
+    background-color: black;
+    border: 3px solid white;
+    border-radius: 7px;
+    color: white;
+    font-family: 'Overpass Mono', monospace;
+    padding: 0.3em;
+}

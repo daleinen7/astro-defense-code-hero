@@ -1,18 +1,27 @@
+import TweenOne from 'rc-tween-one';
 import React from 'react';
 import styles from './Asteroid.module.css';
+import Question from '../../components/Question/Question';
 
 const Asteroid = (props) => {
+
   return(
-    <div 
-      className={styles.Asteroid}
-      style={{
-        position: "relative",
-        right: "0"
+    <TweenOne 
+      animation={{
+
+        x:"-50%",
+        // duration:600000,
+        duration: 1000,
+        ease: 'linear'
       }}
-    
     >
-      Asteroid
-    </div>
+      <div 
+        className={styles.Asteroid}
+      
+      >
+        <Question />
+      </div>
+    </TweenOne>
   )
 }
 
