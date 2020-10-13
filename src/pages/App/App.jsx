@@ -7,18 +7,19 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import Station from '../../components/Station/Station';
 import Space from '../../components/Space/Space';
+import Asteroid from '../../components/Asteroid/Asteroid';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       focused: 0,
+      asteroids: [],
       user: userService.getUser()
     };
   }
 
   /*
-
   asteroid {
     percentAcross: 0,
     category: 'JS',
@@ -26,9 +27,17 @@ class App extends Component {
     answer: 'arr[2][1]',
     type: 'call var'
   }
-
   */
 
+  createAsteroid() {
+    const asteroid = <Asteroid
+      question='Question goes here'
+      answer='Answer is this'
+    />
+    let asteroids = this.state.asteroids.slice()
+    asteroids.push(asteroid);
+    this.setState({asteroids: asteroids})
+  }
   /*--- Callback Methods ---*/
   handleFocus = (focusedLane) => {
     this.setState({focused: focusedLane})
@@ -56,6 +65,8 @@ class App extends Component {
       } else if(e.keyCode === 40) {
         // again hardcoded lane count
         this.handleFocus(Math.abs((this.state.focused + 1) % 3))
+      } else if(e.keyCode === 16) {
+        this.createAsteroid();
       }
     })
   }
@@ -71,7 +82,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <div className="App">
               <Station focused={this.state.focused} /> 
-              <Space focused={this.state.focused} />
+              <Space asteroids={this.state.asteroids} focused={this.state.focused} />
             </div>
           }/>
           <Route exact path='/signup' render={({ history }) => 

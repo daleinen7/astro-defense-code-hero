@@ -5,7 +5,7 @@ import Asteroid from '../../components/Asteroid/Asteroid';
 const Lane = (props) => {
   return(
     <div className={styles.Lane}>
-      <Asteroid />
+      {props.asteroids}
     </div>
   )
 }
