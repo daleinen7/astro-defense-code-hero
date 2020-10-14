@@ -23,7 +23,7 @@ class App extends Component {
 
   async createAsteroid() {
     const question = await questionAPI.getRandom();
-    console.log(question);
+    // console.log(question);
     const margin = Math.floor(Math.random() * 40);
     const asteroid = {
       lane: Math.floor(Math.random() * 3),
@@ -36,10 +36,19 @@ class App extends Component {
     this.setState({asteroids: asteroids, astroCount: (this.state.astroCount += 1)});
   }
 
+  destroyAsteroid(e) {
+    // let asteroids = this.state.asteroids.slice();
+    // asteroids = asteroids.pop();
+    // this.setState({asteroids: asteroids});
+    // console.log(e.target);
+    e.target.style.display="none";  
+  }
+
   /*--- Callback Methods ---*/
   handleCollision = (e) => {
     // console.log(e.target);
     // unmountComponentAtNode(e.target);
+    e.target.style.display="none";
   }
   
   handleFocus = (focusedLane) => {
@@ -59,7 +68,7 @@ class App extends Component {
   componentDidMount() {
     this.createAsteroid();
 
-    this.interval = setInterval(()=> this.createAsteroid(), 10000);
+    this.interval = setInterval(()=> this.createAsteroid(), 8000);
 
     window.addEventListener('keydown', (e)=> {
       if(e.keyCode === 38) {
@@ -72,8 +81,8 @@ class App extends Component {
       } else if(e.keyCode === 40) {
         // again hardcoded lane count
         this.handleFocus(Math.abs((this.state.focused + 1) % 3))
-      } else if(e.keyCode === 16) {
-        this.createAsteroid();
+      } else if(e.keyCode === 13) {
+        this.destroyAsteroid();
       }
     })
   }
@@ -97,6 +106,7 @@ class App extends Component {
                 asteroids={this.state.asteroids} 
                 focused={this.state.focused} 
                 handleCollision={this.handleCollision}
+                destroyAsteroid={this.destroyAsteroid}
               />
             </div>
           }/>

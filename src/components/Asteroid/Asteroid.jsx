@@ -7,8 +7,8 @@ const Asteroid = (props) => {
   return(
     <TweenOne 
       animation={{
-        x:"-120%",
-        duration:100000,
+        x:"-101%",
+        duration:10000,
         // duration: 1000,
         ease: 'linear',
         onComplete: (e)=> props.handleCollision(e)
@@ -18,6 +18,7 @@ const Asteroid = (props) => {
       <div 
         className={styles.Asteroid}
         style={{marginTop: props.margin}}
+        onClick={(e)=> props.destroyAsteroid(e)}
       >
         <Question 
           question={props.question}

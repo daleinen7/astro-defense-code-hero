@@ -11,9 +11,11 @@ const Lane = (props) => {
         <Asteroid 
           question={asteroid.question}
           handleCollision={props.handleCollision}
-          key={props.astroCount}
           astroCount={props.astroCount}
           margin={asteroid.margin}
+          destroyAsteroid={props.destroyAsteroid}
+          
+          key={props.astroCount}  
           // answer={asteroid.answer}
         />
       )}

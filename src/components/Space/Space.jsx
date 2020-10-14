@@ -15,6 +15,7 @@ const Space = (props) => {
         handleCollision={props.handleCollision} 
         asteroids={lane0} focused={props.focused}
         key={0}
+        destroyAsteroid={props.destroyAsteroid}
       />
       
       <Lane 
@@ -22,6 +23,7 @@ const Space = (props) => {
         handleCollision={props.handleCollision} 
         asteroids={lane1} focused={props.focused}
         key={1}
+        destroyAsteroid={props.destroyAsteroid}
       />
       
       <Lane 
@@ -29,6 +31,7 @@ const Space = (props) => {
         handleCollision={props.handleCollision} 
         asteroids={lane2} focused={props.focused}
         key={2}
+        destroyAsteroid={props.destroyAsteroid}
       />
       
     </div>
