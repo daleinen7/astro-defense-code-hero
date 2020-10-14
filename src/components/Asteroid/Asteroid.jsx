@@ -8,9 +8,9 @@ const Asteroid = (props) => {
   return(
     <TweenOne 
       animation={{
-        x:"-110%",
-        // duration:100000,
-        duration: 1000,
+        x:"-120%",
+        duration:100000,
+        // duration: 1000,
         ease: 'linear',
         onComplete: (e)=> props.handleCollision(e)
       }}

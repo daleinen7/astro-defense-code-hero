@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { unmountComponentAtNode } from "react-dom"; 
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import * as questionAPI from '../../services/questions-api';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -18,30 +20,23 @@ class App extends Component {
     };
   }
 
-  /*
-  asteroid {
-    percentAcross: 0,
-    category: 'JS',
-    question: 'call the variable red: arr = ["zero","one",["two", "red"], "three"]',
-    answer: 'arr[2][1]',
-    type: 'call var'
-  }
-  */
-
-  createAsteroid() {
+  async createAsteroid() {
+    const question = await questionAPI.getRandom();
+    console.log(question);
     const asteroid = {
       lane: Math.floor(Math.random() * 3),
-      progress: 0,
-      question:'Question goes here',
-      answer:'Answer is this',
+      question: question.question,
+      answer: question.answer,
     }
-    let asteroids = this.state.asteroids.slice()
+    let asteroids = this.state.asteroids.slice();
     asteroids.push(asteroid);
-    this.setState({asteroids: asteroids})
+    this.setState({asteroids: asteroids});
   }
+
   /*--- Callback Methods ---*/
   handleCollision = (e) => {
     // console.log(e.target);
+    // unmountComponentAtNode(e.target);
   }
   
   handleFocus = (focusedLane) => {
@@ -60,7 +55,7 @@ class App extends Component {
   /*--- Lifecycle Methods ---*/
   componentDidMount() {
 
-    this.interval = setInterval(()=> this.createAsteroid(), 1000);
+    this.interval = setInterval(()=> this.createAsteroid(), 10000);
 
     window.addEventListener('keydown', (e)=> {
       if(e.keyCode === 38) {
