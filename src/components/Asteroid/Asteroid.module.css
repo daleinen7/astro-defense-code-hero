@@ -1,10 +1,11 @@
 .Asteroid {
     /* height: 100%; */
     width: 30%;
-    margin-right: -60%;
+    margin-right: -35%;
     float: right;
-    background-color: rgb(46, 44, 42);
+    background-image: url('../../blob.svg');
+    background-repeat: no-repeat;
+    /* background-color: rgb(46, 44, 42); */
     padding: 40px;
-    /* padding: 40px; */
-    border-radius: 70px;
+    /* border-radius: 70px; */
 }

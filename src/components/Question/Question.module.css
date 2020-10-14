@@ -1,7 +1,7 @@
 .Question {
-    background-color: black;
-    border: 3px solid white;
-    border-radius: 7px;
+    background-color: rgba(93, 133, 118, 0.338);
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 3px;
     color: white;
     font-family: 'Overpass Mono', monospace;
     padding: 0.3em;

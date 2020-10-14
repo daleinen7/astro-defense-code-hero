@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="svg48"
+   sodipodi:docname="blob.svg"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
+  <metadata
+     id="metadata54">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs52" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2021"
+     inkscape:window-height="998"
+     id="namedview50"
+     showgrid="false"
+     inkscape:zoom="3.345"
+     inkscape:cx="100"
+     inkscape:cy="100"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg48" />
+  <path
+     fill="#49423b"
+     d="m 153.7147,24.5 c 13.49798,6.5 21.31261,21.3 29.83765,35.3 8.40664,13.9 17.5237,27.1 15.98446,39.5 -1.53925,12.4 -13.61639,24 -21.78622,38.3 -8.28824,14.3 -12.66916,31.2 -24.62791,36.1 -11.95875,5 -31.49531,-2 -47.71658,-6.9 C 89.303242,161.9 76.515675,159 61.596845,155.5 46.79642,151.9 29.746329,147.7 18.261199,138.4 6.7760689,129 0.85589882,114.5 0.73749555,100 c 0,-14.6 5.80176675,-29.1 13.97160245,-43.3 8.288237,-14.1 18.82614,-27.9 33.74497,-33.7 14.918828,-5.7 34.336986,-3.6 53.518342,-3.4 19.18135,0.2 38.3627,-1.6 51.74229,4.9 z"
+     id="path46"
+     style="stroke-width:1.08813" />
+</svg>

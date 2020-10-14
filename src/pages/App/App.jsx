@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      astroCount: 0,
       focused: 0,
       asteroids: [],
       user: userService.getUser()
@@ -23,14 +24,16 @@ class App extends Component {
   async createAsteroid() {
     const question = await questionAPI.getRandom();
     console.log(question);
+    const margin = Math.floor(Math.random() * 40);
     const asteroid = {
       lane: Math.floor(Math.random() * 3),
       question: question.question,
       answer: question.answer,
+      margin: margin
     }
     let asteroids = this.state.asteroids.slice();
     asteroids.push(asteroid);
-    this.setState({asteroids: asteroids});
+    this.setState({asteroids: asteroids, astroCount: (this.state.astroCount += 1)});
   }
 
   /*--- Callback Methods ---*/
@@ -54,6 +57,7 @@ class App extends Component {
 
   /*--- Lifecycle Methods ---*/
   componentDidMount() {
+    this.createAsteroid();
 
     this.interval = setInterval(()=> this.createAsteroid(), 10000);
 
