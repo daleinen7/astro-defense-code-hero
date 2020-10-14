@@ -21,15 +21,29 @@ class App extends Component {
     };
   }
 
+  animateAstroid() {
+    const newAsteroids = this.state.asteroids.slice();
+    newAsteroids.forEach((asteroid, idx, asteroids) => {
+      if (asteroid.progress > 62) {
+        asteroids.splice(idx, 1);
+      } else {
+        asteroid.progress = asteroid.progress + 0.10
+      }
+    });
+    this.setState({asteroids: newAsteroids});
+  }
+
   async createAsteroid() {
     const question = await questionAPI.getRandom();
     // console.log(question);
     const margin = Math.floor(Math.random() * 40);
     const asteroid = {
+      progress:-80,
       lane: Math.floor(Math.random() * 3),
       question: question.question,
       answer: question.answer,
-      margin: margin
+      margin: margin,
+      key: this.state.astroCount += 1
     }
     let asteroids = this.state.asteroids.slice();
     asteroids.push(asteroid);
@@ -68,7 +82,10 @@ class App extends Component {
   componentDidMount() {
     this.createAsteroid();
 
-    this.interval = setInterval(()=> this.createAsteroid(), 8000);
+    this.anim = setInterval(()=> this.animateAstroid(), 40);
+
+    // this.interval = setInterval(()=> this.createAsteroid(), 8000);
+    this.interval = setInterval(()=> this.createAsteroid(), 18000);
 
     window.addEventListener('keydown', (e)=> {
       if(e.keyCode === 38) {
@@ -105,6 +122,7 @@ class App extends Component {
               <Space 
                 asteroids={this.state.asteroids} 
                 focused={this.state.focused} 
+                astroCount={this.state.astroCount}
                 handleCollision={this.handleCollision}
                 destroyAsteroid={this.destroyAsteroid}
               />

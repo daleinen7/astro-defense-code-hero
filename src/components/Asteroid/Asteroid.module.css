@@ -1,7 +1,10 @@
 .Asteroid {
     /* height: 100%; */
+    /* position: fixed; */
     width: 30%;
-    margin-right: -35%;
+    /* -80 is off screen */
+    /* 62 is at end */
+    /* right: 62%; */
     float: right;
     background-image: url('../../blob.svg');
     background-repeat: no-repeat;

@@ -14,8 +14,9 @@ const Lane = (props) => {
           astroCount={props.astroCount}
           margin={asteroid.margin}
           destroyAsteroid={props.destroyAsteroid}
-          
-          key={props.astroCount}  
+          progress={asteroid.progress + "%"}
+          astroKey={asteroid.key}
+          key={asteroid.key}  
           // answer={asteroid.answer}
         />
       )}
