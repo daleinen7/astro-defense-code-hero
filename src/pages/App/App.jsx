@@ -18,6 +18,7 @@ class App extends Component {
       focused: 0,
       firing: false,
       asteroids: [],
+      shields: 0.9,
       user: userService.getUser()
     };
   }
@@ -27,6 +28,8 @@ class App extends Component {
     newAsteroids.forEach((asteroid, idx, asteroids) => {
       // The line below determines where the astroid will disappear (and cause damage to the station)
       if (asteroid.progress > 76) {
+        const newShields = this.state.shields;
+        this.setState({shields: newShields - 0.3})
         asteroids.splice(idx, 1);
       } else {
         asteroid.progress = asteroid.progress + 0.10
@@ -119,7 +122,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <div className="App">
               <Station focused={this.state.focused} fireLaser={this.fireLaser} firing={this.state.firing}/> 
-              <Shields />
+              <Shields shields={this.state.shields}/>
               <Space 
                 asteroids={this.state.asteroids} 
                 focused={this.state.focused} 
