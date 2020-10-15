@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       astroCount: 0,
       focused: 0,
+      firing: false,
       asteroids: [],
       user: userService.getUser()
     };
@@ -57,6 +58,9 @@ class App extends Component {
     newAsteroids.forEach((asteroid, idx, astChk) => {
       if ( asteroid.answer === answer.answer ) {
         astChk.splice(idx, 1);
+        this.setState({firing: true});
+        // the line below determines how long the laser fires
+        setTimeout(()=>{this.setState({firing: false})}, 200);
       }
     })
     this.setState({asteroids: newAsteroids})
@@ -114,7 +118,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <div className="App">
-              <Station focused={this.state.focused} fireLaser={this.fireLaser} /> 
+              <Station focused={this.state.focused} fireLaser={this.fireLaser} firing={this.state.firing}/> 
               <Shields />
               <Space 
                 asteroids={this.state.asteroids} 

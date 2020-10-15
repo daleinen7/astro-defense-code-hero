@@ -26,5 +26,24 @@
     width: 28px;
     height: 24px;
     left: 34%;
-    background-color: rgb(33, 20, 20);
+    background: rgb(25,26,33);
+    background: linear-gradient(90deg, rgba(25,26,33,1) 0%, rgba(55,31,36,1) 100%);
+}
+
+.laserBeam {
+    margin-top: 260px;
+    margin-left:60px;
+    width: 1000px;
+    height: 7px;
+    border-radius: 40px;
+    /* background-color: lavender; */
+    transform: skew(24deg)
+    rotate(30deg);
+    box-shadow:
+            0 0 .5rem #fff,
+            inset 0 0 .5rem #fff,
+            0 0 2rem rgb(235, 81, 54),
+            inset 0 0 2rem rgb(235, 81, 54),
+            0 0 4rem rgb(235, 81, 54),
+            inset 0 0 4rem rgb(235, 81, 54);  
 }
