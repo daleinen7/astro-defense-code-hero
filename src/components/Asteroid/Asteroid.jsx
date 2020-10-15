@@ -18,7 +18,7 @@ const Asteroid = (props) => {
       <div 
         className={styles.Asteroid}
         style={{
-          marginRight: props.progress,
+          right: props.progress,
           marginTop: props.margin
         }}
         onClick={(e)=> props.destroyAsteroid(e)}
