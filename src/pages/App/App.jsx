@@ -24,7 +24,8 @@ class App extends Component {
   animateAstroid() {
     const newAsteroids = this.state.asteroids.slice();
     newAsteroids.forEach((asteroid, idx, asteroids) => {
-      if (asteroid.progress > 62) {
+      // The line below determines where the astroid will disappear (and cause damage to the station)
+      if (asteroid.progress > 82) {
         asteroids.splice(idx, 1);
       } else {
         asteroid.progress = asteroid.progress + 0.10
@@ -35,7 +36,7 @@ class App extends Component {
 
   async createAsteroid() {
     const question = await questionAPI.getRandom();
-    // console.log(question);
+    // The below line will randomize the vertical orientation of the astroids within the lane they appear
     const margin = Math.floor(Math.random() * 40);
     const asteroid = {
       progress:-80,
@@ -51,10 +52,6 @@ class App extends Component {
   }
 
   destroyAsteroid(e) {
-    // let asteroids = this.state.asteroids.slice();
-    // asteroids = asteroids.pop();
-    // this.setState({asteroids: asteroids});
-    // console.log(e.target);
     e.target.style.display="none";  
   }
 
@@ -82,9 +79,10 @@ class App extends Component {
   componentDidMount() {
     this.createAsteroid();
 
+    // the line below determines how smooth the astroid movement is
     this.anim = setInterval(()=> this.animateAstroid(), 40);
 
-    // this.interval = setInterval(()=> this.createAsteroid(), 8000);
+    // the line below determines how often an asteroid appears
     this.interval = setInterval(()=> this.createAsteroid(), 18000);
 
     window.addEventListener('keydown', (e)=> {

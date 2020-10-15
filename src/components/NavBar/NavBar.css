@@ -11,17 +11,18 @@
 .NavBar-title {
   font-family: 'Overpass Mono', monospace;
   color: rgb(31, 176, 193);
-  text-shadow: 1px 1px lightcoral,
-               2px 2px lightcoral,
-               3px 3px lightcoral,
-               4px 4px lightcoral,
-               5px 5px lightcoral,
-               6px 6px rgba(240, 128, 128, 0.7),
-               7px 7px rgba(240, 128, 128, 0.6),
-               8px 8px rgba(240, 128, 128, 0.5),
-               9px 9px rgba(240, 128, 128, 0.4),
-               10px 10px rgba(240, 128, 128, 0.3),
-               11px 11px rgba(240, 128, 128, 0.2);
+  text-shadow: 1px 1px rgb(36, 114, 145),
+               2px 2px rgb(240, 128, 128),
+               3px 3px rgba(240, 128, 128, 0.88),
+               4px 4px rgba(240, 128, 128, 0.78),
+               5px 5px rgba(240, 128, 128, 0.85),
+               6px 6px rgba(240, 128, 128, 0.73),
+               7px 7px rgba(240, 128, 128, 0.5),
+               8px 8px rgba(240, 128, 128, 0.4),
+               9px 9px rgba(240, 128, 128, 0.18),
+               10px 10px rgba(240, 128, 128, 0.12),
+               11px 11px rgba(240, 128, 128, 0.05),
+               12px 12px rgba(240, 128, 128, 0.01);
   margin-left: 2vw;
 }
 
