@@ -5,5 +5,26 @@
     flex-direction: column;
     height: 90vh;
     justify-content: space-around;
-    background-color: gray;
+    background-color: rgb(101, 104, 113);
+}
+
+.stationFront {
+    width: 8%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-around;
+    background-color: rgb(62, 63, 73);
+}
+
+.laserPort {
+    position:relative;
+    transform: skew(-24deg)
+                 rotate(-24deg);
+    margin-top: -20px;
+    width: 28px;
+    height: 24px;
+    left: 34%;
+    background-color: rgb(33, 20, 20);
 }

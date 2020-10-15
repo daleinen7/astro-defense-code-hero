@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Space.module.css';
 import Lane from '../../components/Lane/Lane';
-import Shields from '../../components/Shields/Shields';
 
 const Space = (props) => {
   const lane0 = props.asteroids.filter(n => n.lane === 0);
@@ -9,7 +8,6 @@ const Space = (props) => {
   const lane2 = props.asteroids.filter(n => n.lane === 2);
   return(
     <div className={styles.Space}>
-      <Shields />
       <Lane 
         astroCount={props.astroCount} 
         handleCollision={props.handleCollision} 

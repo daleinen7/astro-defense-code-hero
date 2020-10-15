@@ -2,6 +2,7 @@
     width: 10%;
     height: 100%;
     /* border: 1px solid lightblue; */
+    left: 30%; 
     position: absolute;
-    box-shadow: inset -127px 0 129px -127px rgba(94, 179, 244, 0.9);
+    box-shadow: inset -200px 0 200px -200px rgba(94, 179, 244, 0.9);
 }

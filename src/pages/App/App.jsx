@@ -8,6 +8,7 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import Station from '../../components/Station/Station';
 import Space from '../../components/Space/Space';
+import Shields from '../../components/Shields/Shields';
 
 class App extends Component {
   constructor() {
@@ -54,7 +55,6 @@ class App extends Component {
   fireLaser = (answer) => {
     const newAsteroids = this.state.asteroids.slice();
     newAsteroids.forEach((asteroid, idx, astChk) => {
-      console.log("gabagaba", asteroid.answer, "goww", answer);
       if ( asteroid.answer === answer.answer ) {
         astChk.splice(idx, 1);
       }
@@ -115,6 +115,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <div className="App">
               <Station focused={this.state.focused} fireLaser={this.fireLaser} /> 
+              <Shields />
               <Space 
                 asteroids={this.state.asteroids} 
                 focused={this.state.focused} 
