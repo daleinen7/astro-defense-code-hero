@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { unmountComponentAtNode } from "react-dom"; 
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as questionAPI from '../../services/questions-api';
@@ -25,7 +24,7 @@ class App extends Component {
     const newAsteroids = this.state.asteroids.slice();
     newAsteroids.forEach((asteroid, idx, asteroids) => {
       // The line below determines where the astroid will disappear (and cause damage to the station)
-      if (asteroid.progress > 82) {
+      if (asteroid.progress > 76) {
         asteroids.splice(idx, 1);
       } else {
         asteroid.progress = asteroid.progress + 0.10
@@ -50,16 +49,17 @@ class App extends Component {
     asteroids.push(asteroid);
     this.setState({asteroids: asteroids, astroCount: (this.state.astroCount += 1)});
   }
-
-  destroyAsteroid(e) {
-    e.target.style.display="none";  
-  }
-
+  
   /*--- Callback Methods ---*/
-  handleCollision = (e) => {
-    // console.log(e.target);
-    // unmountComponentAtNode(e.target);
-    e.target.style.display="none";
+  fireLaser = (answer) => {
+    const newAsteroids = this.state.asteroids.slice();
+    newAsteroids.forEach((asteroid, idx, astChk) => {
+      console.log("gabagaba", asteroid.answer, "goww", answer);
+      if ( asteroid.answer === answer.answer ) {
+        astChk.splice(idx, 1);
+      }
+    })
+    this.setState({asteroids: newAsteroids})
   }
   
   handleFocus = (focusedLane) => {
@@ -96,9 +96,7 @@ class App extends Component {
       } else if(e.keyCode === 40) {
         // again hardcoded lane count
         this.handleFocus(Math.abs((this.state.focused + 1) % 3))
-      } else if(e.keyCode === 13) {
-        this.destroyAsteroid();
-      }
+      } 
     })
   }
 
@@ -116,7 +114,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <div className="App">
-              <Station focused={this.state.focused} /> 
+              <Station focused={this.state.focused} fireLaser={this.fireLaser} /> 
               <Space 
                 asteroids={this.state.asteroids} 
                 focused={this.state.focused} 

@@ -5,14 +5,14 @@
 
 .CodeInput {
     margin-left: 0.5em;
-    height: 1.1em;
+    height: 1.05em;
     width: 84%;
     border-radius: 4px;
     color: green;
     font-family: PressStart2P-Regular;
     resize: none;
     padding: 0.7em;
-    font-size: 1em;
+    font-size: 0.9em;
     line-height: 1.2em;
 }
 
