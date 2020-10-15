@@ -121,6 +121,7 @@ class App extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    clearInterval(this.anim)
   }
 
   render() {
