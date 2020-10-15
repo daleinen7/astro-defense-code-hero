@@ -14,6 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      gameOver: false,
       astroCount: 0,
       focused: 0,
       firing: false,
@@ -28,11 +29,22 @@ class App extends Component {
     newAsteroids.forEach((asteroid, idx, asteroids) => {
       // The line below determines where the astroid will disappear (and cause damage to the station)
       if (asteroid.progress > 76) {
-        const newShields = this.state.shields;
-        this.setState({shields: newShields - 0.3})
+        // if there are no shields left set game over
+        if (this.state.shields <= 0) {
+          let newGameOverStatus = this.state.gameOver;
+          newGameOverStatus = true;
+          this.setState({gameOver: newGameOverStatus});
+        } else {
+          let newShields = this.state.shields;
+          // adjust shields
+          this.setState({shields: parseFloat((newShields -= 0.3).toFixed(2))});
+        }
+        // either way remove astroid from state
         asteroids.splice(idx, 1);
       } else {
-        asteroid.progress = asteroid.progress + 0.10
+        if (this.state.gameOver === false) {
+          asteroid.progress = asteroid.progress + 0.10
+        }
       }
     });
     this.setState({asteroids: newAsteroids});
