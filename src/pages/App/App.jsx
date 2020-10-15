@@ -9,6 +9,11 @@ import NavBar from '../../components/NavBar/NavBar';
 import Station from '../../components/Station/Station';
 import Space from '../../components/Space/Space';
 import Shields from '../../components/Shields/Shields';
+import themeMusic from '../../sounds/astro-defense-code-hero_theme.mp3';
+import astroImpact from '../../sounds/astroidImpact1.mp3';
+import shieldHit from '../../sounds/shield1.mp3';
+import laserSound from '../../sounds/laser4.mp3';
+import gameOverSound from '../../sounds/gameOver.mp3';
 
 class App extends Component {
   constructor() {
@@ -33,13 +38,16 @@ class App extends Component {
         if (this.state.shields <= 0) {
           let newGameOverStatus = this.state.gameOver;
           newGameOverStatus = true;
+          this.playSound(gameOverSound, 1);
           this.setState({gameOver: newGameOverStatus});
         } else {
           let newShields = this.state.shields;
           // adjust shields
+          this.playSound(shieldHit, 1);
           this.setState({shields: parseFloat((newShields -= 0.3).toFixed(2))});
         }
-        // either way remove astroid from state
+        // either way remove astroid from state and play impact sound
+        // this.playSound(astroImpact, 1);
         asteroids.splice(idx, 1);
       } else {
         if (this.state.gameOver === false) {
@@ -55,7 +63,7 @@ class App extends Component {
     // The below line will randomize the vertical orientation of the astroids within the lane they appear
     const margin = Math.floor(Math.random() * 40);
     const asteroid = {
-      progress:-80,
+      progress: -20,
       lane: Math.floor(Math.random() * 3),
       question: question.question,
       answer: question.answer,
@@ -66,6 +74,13 @@ class App extends Component {
     asteroids.push(asteroid);
     this.setState({asteroids: asteroids, astroCount: (this.state.astroCount += 1)});
   }
+
+  playSound = (source, vol) => {
+    console.log(source);
+    this.audio = new Audio(source);
+    this.audio.volume = vol;
+    this.audio.play()
+  }
   
   /*--- Callback Methods ---*/
   fireLaser = (answer) => {
@@ -75,6 +90,7 @@ class App extends Component {
         astChk.splice(idx, 1);
         this.setState({firing: true});
         // the line below determines how long the laser fires
+        this.playSound(laserSound, 1);
         setTimeout(()=>{this.setState({firing: false})}, 200);
       }
     })
@@ -97,6 +113,9 @@ class App extends Component {
   /*--- Lifecycle Methods ---*/
   componentDidMount() {
     this.createAsteroid();
+
+    // Start Theme Mus
+    this.playSound(themeMusic, 0.5);
 
     // the line below determines how smooth the astroid movement is
     this.anim = setInterval(()=> this.animateAstroid(), 40);
