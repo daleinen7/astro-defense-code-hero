@@ -1,6 +1,8 @@
 .Question {
-    background-color: rgba(93, 133, 118, 0.338);
-    border: 1px solid rgb(160, 160, 160);
+    /* background-color: rgba(93, 133, 118, 0.338);
+    border: 1px solid rgb(160, 160, 160, 0.2); */
+    margin-left: -2rem;
+    text-align: center;
     border-radius: 3px;
     color: white;
     font-family: 'Overpass Mono', monospace;

@@ -115,7 +115,7 @@ class App extends Component {
     this.createAsteroid();
 
     // Start Theme Mus
-    this.playSound(themeMusic, 0.5);
+    // this.playSound(themeMusic, 0.5);
 
     // the line below determines how smooth the astroid movement is
     this.anim = setInterval(()=> this.animateAstroid(), 40);

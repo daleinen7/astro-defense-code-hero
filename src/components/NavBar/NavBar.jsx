@@ -17,7 +17,7 @@ const NavBar = (props) => {
   return (
     <>
       <div className="NavBar-header">
-        <h1 className='NavBar-title'>Astro Defense Code Hero</h1>
+        <h1 className='NavBar-title'>Hero Astro Code Defense</h1>
         <div className='NavBar'>
           {nav}
         </div>
