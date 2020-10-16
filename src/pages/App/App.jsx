@@ -9,8 +9,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import Station from '../../components/Station/Station';
 import Space from '../../components/Space/Space';
 import Shields from '../../components/Shields/Shields';
-import themeMusic from '../../sounds/astro-defense-code-hero_theme.mp3';
-import astroImpact from '../../sounds/astroidImpact1.mp3';
+// import themeMusic from '../../sounds/astro-defense-code-hero_theme.mp3';
+// import astroImpact from '../../sounds/astroidImpact1.mp3';
 import shieldHit from '../../sounds/shield1.mp3';
 import laserSound from '../../sounds/laser4.mp3';
 import gameOverSound from '../../sounds/gameOver.mp3';
@@ -149,6 +149,7 @@ class App extends Component {
         <NavBar 
         user={this.state.user} 
         handleLogout={this.handleLogout}
+        shields={this.state.shields}
         />
         <Switch>
           <Route exact path='/' render={() =>

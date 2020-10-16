@@ -6,6 +6,7 @@
     height: 90vh;
     justify-content: space-around;
     background-color: rgb(101, 104, 113);
+    z-index: 1;
 }
 
 .stationFront {
@@ -16,6 +17,8 @@
     height: 90vh;
     justify-content: space-around;
     background-color: rgb(62, 63, 73);
+    position: relative;
+    z-index: -1;
 }
 
 .laserPort {

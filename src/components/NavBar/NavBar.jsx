@@ -18,6 +18,9 @@ const NavBar = (props) => {
     <>
       <div className="NavBar-header">
         <h1 className='NavBar-title'>Hero Astro Code Defense</h1>
+        <div className='NavBar-shieldDisplay'>
+          {(props.shields === 0.9) ? "100%" : Math.floor(props.shields * 100) + "%"}
+        </div>
         <div className='NavBar'>
           {nav}
         </div>

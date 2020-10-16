@@ -2,6 +2,7 @@
     /* height: 100%; */
     position: absolute;
     width: 15%;
+    z-index: 5;
     /* -80 is off screen */
     /* 62 is at end */
     /* right: 62%; */
