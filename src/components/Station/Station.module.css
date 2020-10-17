@@ -1,12 +1,13 @@
 .Station {
     width: 30%;
     /* border: 1px solid red; */
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 90vh;
     justify-content: space-around;
     background-color: rgb(101, 104, 113);
-    z-index: 1;
+    z-index: -1;
 }
 
 .stationFront {

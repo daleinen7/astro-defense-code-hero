@@ -3,8 +3,9 @@
     height: 100%;
     /* border: 1px solid lightblue; */
     /* left: 30%; re */
-    position: absolute;
-    box-shadow: inset -200px 0 30px -200px rgba(94, 179, 244, 0.9);
+    /* box-shadow: inset -200px 0 30px -200px rgba(94, 179, 244, 0.9); */
     /* box-shadow: inset -200px 0 242px -200px rgba(94, 179, 244, 0.9); */
+    /* box-shadow: inset -200px 0 242px -200px rgba(94, 179, 244); */
+    position: absolute;
     z-index: 4;
 }

@@ -6,9 +6,10 @@ const Shields = (props) => {
     <>
       <div 
         className={styles.Shields}
-        style={{
-          boxShadow: `inset -200px 0 42px -200px rgba(94, 179, 244, ${props.shields})`
-        }}
+          style={{
+            boxShadow: `inset -200px 0 40px -200px rgba(94, 179, 244, ${props.shields})`,
+            zIndex:4
+          }}
       ></div>
      
     </>
