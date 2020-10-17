@@ -86,7 +86,9 @@ class App extends Component {
   fireLaser = (answer) => {
     const newAsteroids = this.state.asteroids.slice();
     newAsteroids.forEach((asteroid, idx, astChk) => {
-      if ( asteroid.answer === answer.answer ) {
+      const answerRegEx = new RegExp(asteroid.answer)
+      // if ( asteroid.answer === answer.answer ) {
+      if ( answerRegEx.test(answer.answer) ) {
         astChk.splice(idx, 1);
         this.setState({firing: true});
         // the line below determines how long the laser fires
