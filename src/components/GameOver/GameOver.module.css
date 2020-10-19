@@ -8,6 +8,7 @@
     margin:0 auto;
     margin-left:-250px;
     margin-top:-250px;
+    z-index: 6;
 }
 
 .notice {
@@ -39,10 +40,16 @@ button:hover {
     cursor: pointer;
 }
 
-li {
+
+
+h3, p {
     text-align: center;
     list-style-type: none;
     color: white;
     font-weight: bold;
     font-family: 'Overpass Mono', monospace;
+}
+
+p {
+    font-size: 2em;
 }
