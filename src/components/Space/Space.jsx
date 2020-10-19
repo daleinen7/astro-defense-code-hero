@@ -32,7 +32,7 @@ const Space = (props) => {
         key={2}
         destroyAsteroid={props.destroyAsteroid}
       />
-      { props.gameOver === true ? <GameOver handleNewGame={props.handleNewGame} score={props.score}/> : ""}
+      { props.gameOver === true ? <GameOver handleNewGame={props.handleNewGame} user={props.user}/> : ""}
     </div>
   )
 }

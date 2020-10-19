@@ -13,7 +13,7 @@ const GameOver = (props) => {
         <div className={styles.notice}>GAME OVER</div>
         <button onClick={props.handleNewGame}>Play Again</button>
         <h3>Your High Score</h3>
-        <p>{props.score}</p>
+        <p>{props.user.score}</p>
         </div>
     )
 }

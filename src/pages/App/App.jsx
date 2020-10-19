@@ -201,7 +201,7 @@ class App extends Component {
                 handleCollision={this.handleCollision}
                 destroyAsteroid={this.destroyAsteroid}
                 gameOver={this.state.gameOver}
-                score={this.state.user.highScore}
+                user={this.state.user}
                 handleNewGame={this.handleNewGame}
               />
             </div>
