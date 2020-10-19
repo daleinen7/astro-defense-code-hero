@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Space.module.css';
 import Lane from '../../components/Lane/Lane';
+import GameOver from '../../components/GameOver/GameOver';
 
 const Space = (props) => {
   const lane0 = props.asteroids.filter(n => n.lane === 0);
@@ -31,7 +32,7 @@ const Space = (props) => {
         key={2}
         destroyAsteroid={props.destroyAsteroid}
       />
-      
+      { props.gameOver === true ? <GameOver handleNewGame={props.handleNewGame} score={props.score}/> : ""}
     </div>
   )
 }

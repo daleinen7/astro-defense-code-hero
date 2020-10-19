@@ -5,7 +5,8 @@ export default {
     signup,
     getUser,
     logout,
-    login
+    login,
+    updateHighScore
   };
 
 
@@ -44,4 +45,14 @@ function signup(user) {
     .then(({token}) => tokenService.setToken(token));
   }
   
-  
+  function updateHighScore(user) {
+    console.log("Merk tha turt!", user);
+    return fetch(`${BASE_URL}/update/${user._id}`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        "authorization": "Bearer " + tokenService.getToken()
+      },
+      body: JSON.stringify(user)
+    }).then(res => res.json())
+  }

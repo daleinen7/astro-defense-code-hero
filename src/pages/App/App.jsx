@@ -19,9 +19,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      ...this.initState(),
       gameOver: false,
       astroCount: 0,
       focused: 0,
+      score: 0,
       firing: false,
       asteroids: [],
       shields: 0.9,
@@ -30,34 +32,47 @@ class App extends Component {
   }
 
   animateAstroid() {
-    const newAsteroids = this.state.asteroids.slice();
-    newAsteroids.forEach((asteroid, idx, asteroids) => {
-      // The line below determines where the astroid will disappear (and cause damage to the station)
-      if (asteroid.progress > 76) {
-        // if there are no shields left set game over
-        if (this.state.shields <= 0) {
-          let newGameOverStatus = this.state.gameOver;
-          newGameOverStatus = true;
-          this.playSound(gameOverSound, 1);
-          this.setState({gameOver: newGameOverStatus});
+    if (this.state.gameOver === false) {
+      const newAsteroids = this.state.asteroids.slice();
+      newAsteroids.forEach((asteroid, idx, asteroids) => {
+        // The line below determines where the astroid will disappear (and cause damage to the station)
+        if (asteroid.progress > 76) {
+          // if there are no shields left set game over
+          if (this.state.shields <= 0) {
+            let newGameOverStatus = this.state.gameOver;
+            newGameOverStatus = true;
+            this.playSound(gameOverSound, 1);
+            this.setState({gameOver: newGameOverStatus});
+            // if the player has a new high score
+            if (this.state.user.highScore < this.state.score) {
+              const newUser = this.state.user;
+              newUser.highScore = this.state.score;
+              this.handleUpdate(newUser)
+            }
+          } else {
+            let newShields = this.state.shields;
+            // adjust shields
+            this.playSound(shieldHit, 1);
+            this.setState({shields: parseFloat((newShields -= 0.3).toFixed(2))});
+          }
+          // either way remove astroid from state and play impact sound
+          // this.playSound(astroImpact, 1);
+          asteroids.splice(idx, 1);
         } else {
-          let newShields = this.state.shields;
-          // adjust shields
-          this.playSound(shieldHit, 1);
-          this.setState({shields: parseFloat((newShields -= 0.3).toFixed(2))});
+          if (this.state.gameOver === false) {
+            asteroid.progress = asteroid.progress + 0.10
+          }
         }
-        // either way remove astroid from state and play impact sound
-        // this.playSound(astroImpact, 1);
-        asteroids.splice(idx, 1);
-      } else {
-        if (this.state.gameOver === false) {
-          asteroid.progress = asteroid.progress + 0.10
-        }
-      }
-    });
-    this.setState({asteroids: newAsteroids});
+      });
+      this.setState({asteroids: newAsteroids});
+    }
   }
 
+  handleUpdate = async (user) => {
+    console.log("yo the update user func is getting called");
+    await userService.updateHighScore(user);
+  }
+  
   async createAsteroid() {
     const question = await questionAPI.getRandom();
     // The below line will randomize the vertical orientation of the astroids within the lane they appear
@@ -67,6 +82,7 @@ class App extends Component {
       lane: Math.floor(Math.random() * 3),
       question: question.question,
       answer: question.answer,
+      score: question.score,
       margin: margin,
       key: this.state.astroCount += 1
     }
@@ -87,13 +103,14 @@ class App extends Component {
     const newAsteroids = this.state.asteroids.slice();
     newAsteroids.forEach((asteroid, idx, astChk) => {
       const answerRegEx = new RegExp(asteroid.answer)
-      // if ( asteroid.answer === answer.answer ) {
       if ( answerRegEx.test(answer.answer) ) {
         astChk.splice(idx, 1);
         this.setState({firing: true});
         // the line below determines how long the laser fires
+        let scoreCopy = this.state.score;
+        scoreCopy += asteroid.score;
         this.playSound(laserSound, 1);
-        setTimeout(()=>{this.setState({firing: false})}, 200);
+        setTimeout(()=>{this.setState({firing: false, score: scoreCopy})}, 200);
       }
     })
     this.setState({asteroids: newAsteroids})
@@ -103,13 +120,31 @@ class App extends Component {
     this.setState({focused: focusedLane})
   }
 
+  initState() {
+    console.log('we gon init');
+    return {
+      gameOver: false,
+      astroCount: 0,
+      focused: 0,
+      score: 0,
+      firing: false,
+      asteroids: [],
+      shields: 0.9,
+    }
+  }
+
+  handleNewGame = ()=> {
+    console.log('new new new game');
+    this.setState(this.initState());
+  }
+
   handleLogout = () => {
     userService.logout();
-    this.setState({user: null})
+    this.setState({user: null});
   }
 
   handleSignupOrLogin = () => {
-    this.setState({user: userService.getUser()})
+    this.setState({user: userService.getUser()});
   }
 
   /*--- Lifecycle Methods ---*/
@@ -152,6 +187,7 @@ class App extends Component {
         user={this.state.user} 
         handleLogout={this.handleLogout}
         shields={this.state.shields}
+        score={this.state.score}
         />
         <Switch>
           <Route exact path='/' render={() =>
@@ -164,6 +200,9 @@ class App extends Component {
                 astroCount={this.state.astroCount}
                 handleCollision={this.handleCollision}
                 destroyAsteroid={this.destroyAsteroid}
+                gameOver={this.state.gameOver}
+                score={this.state.user.highScore}
+                handleNewGame={this.handleNewGame}
               />
             </div>
           }/>

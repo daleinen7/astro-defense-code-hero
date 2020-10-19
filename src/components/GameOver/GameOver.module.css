@@ -1,0 +1,48 @@
+.GameOver {
+    /* position: fixed; */
+    position:absolute;
+    display: flex;
+    left: 50%;
+    top: 50%;
+    flex-direction: column;
+    margin:0 auto;
+    margin-left:-250px;
+    margin-top:-250px;
+}
+
+.notice {
+    font-family: 'Overpass Mono', monospace;
+    font-size: 10em;
+    text-align: center;
+    color: rgb(165, 10, 38);
+    line-height: 70%;
+    width: 50%;
+
+}
+
+button {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-grow: 0;
+    font-family: 'Overpass Mono', monospace;
+    color: rgb(165, 10, 38);
+    background-color: rgb(31, 176, 193);
+    height: 2em;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1em;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(30, 150, 177);
+    cursor: pointer;
+}
+
+li {
+    text-align: center;
+    list-style-type: none;
+    color: white;
+    font-weight: bold;
+    font-family: 'Overpass Mono', monospace;
+}

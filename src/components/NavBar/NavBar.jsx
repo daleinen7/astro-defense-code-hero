@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+let score = props.user ? <div className='NavBar-score'><span className="NavBar-displaySpan">SCORE: </span>{props.score}</div> : ""
   let nav = props.user ?
     <div>
       <Link to='' className='NavBar-link' onClick={props.handleLogout}>LOG OUT</Link>
@@ -19,8 +20,9 @@ const NavBar = (props) => {
       <div className="NavBar-header">
         <h1 className='NavBar-title'>Hero Astro Code Defense</h1>
         <div className='NavBar-shieldDisplay'>
-          {(props.shields === 0.9) ? "100%" : Math.floor(props.shields * 100) + "%"}
+          <span className='NavBar-displaySpan'>SHIELDS</span>: {(props.shields === 0.9) ? "100%" : Math.floor(props.shields * 100) + "%"}
         </div>
+        {score}
         <div className='NavBar'>
           {nav}
         </div>
