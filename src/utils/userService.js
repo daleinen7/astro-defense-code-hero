@@ -46,7 +46,6 @@ function signup(user) {
   }
   
   function updateHighScore(user) {
-    console.log("Merk tha turt!", user);
     return fetch(`${BASE_URL}/update/${user._id}`, {
       method: 'POST',
       headers: {

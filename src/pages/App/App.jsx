@@ -69,7 +69,6 @@ class App extends Component {
   }
 
   handleUpdate = async (user) => {
-    console.log("yo the update user func is getting called");
     await userService.updateHighScore(user);
   }
   
@@ -92,7 +91,6 @@ class App extends Component {
   }
 
   playSound = (source, vol) => {
-    console.log(source);
     this.audio = new Audio(source);
     this.audio.volume = vol;
     this.audio.play()
@@ -121,7 +119,6 @@ class App extends Component {
   }
 
   initState() {
-    console.log('we gon init');
     return {
       gameOver: false,
       astroCount: 0,
@@ -134,7 +131,6 @@ class App extends Component {
   }
 
   handleNewGame = ()=> {
-    console.log('new new new game');
     this.setState(this.initState());
   }
 
